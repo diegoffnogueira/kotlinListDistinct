@@ -4,6 +4,16 @@ data class Produto (
         val preco: Double = 0.0
 )
 
+data class Address(
+        val rua: String = "",
+        val bairro: String = ""
+)
+
+data class Customer(
+        val nome: String = "",
+        val idade: Int = 0
+)
+
 fun main(args: Array<String>) {
 
     val productMap = hashMapOf("iPhone 8 Plus 64G" to  Produto("iPhone 8 Plus 64G", "Apple", 850.00),
@@ -34,5 +44,20 @@ fun main(args: Array<String>) {
     val simpleMapPair = mapOf(Pair(4, "quatro"), Pair(3, "tres"), Pair(8, "oito"), Pair(5, "cinco"), Pair(9, "nove"))
     println(simpleMapPair)
     println(simpleMapPair.toSortedMap())
+
+    println("----------")
+
+    val customerMap = mapOf(Pair(Customer("Davi", 30), Address("Rua Abreu", "Copacabana")),
+            Pair(Customer("Carlos", 20), Address("Rua Caconde", "Bento Ribeiro")),
+                    Pair(Customer("Olivia", 35), Address("Rua Olinda", "Madureira")),
+                            Pair(Customer("Daniel", 18), Address("Rua Amarantes", "Marechal")))
+
+    customerMap.forEach { println(it) }
+
+    println("======")
+    //val sortedCustomerMapById = customerMap.toSortedMap(Comparator {  })
+    val sortedCustomerMapById = customerMap.toSortedMap(Comparator { c1, c2 -> c1.idade - c2.idade })
+
+    sortedCustomerMapById.forEach { println("${it.key} - ${it.value}") }
 
 }
