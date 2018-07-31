@@ -114,7 +114,7 @@ fun main(args: Array<String>) {
     println("-------")
     val mixList5 = mutableListOf<Any>()
     simpleList4.filterNot { any -> any is Int }.filterNotNullTo(mixList5)
-    println("mixList5 => ${mixList5}")
+    println("mixList5 => $mixList5")
 
 
 }
