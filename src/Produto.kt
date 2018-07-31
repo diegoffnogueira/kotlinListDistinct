@@ -60,4 +60,20 @@ fun main(args: Array<String>) {
 
     sortedCustomerMapById.forEach { println("${it.key} - ${it.value}") }
 
+    println("======")
+    println("======")
+
+    val newList = customerMap.flatMap { (customer,  _) -> listOf(customer) }
+    newList.forEach { println(it) }
+
+    println("======")
+
+    val newList2 = customerMap.flatMap { (_, address) -> listOf(address) }
+    newList2.forEach { println(it) }
+
+    println("======")
+
+    val newList3 = customerMap.flatMap { (customer, address) -> listOf("${customer.nome} mora na ${address.rua}") }
+    newList3.forEach { println(it) }
+
 }
